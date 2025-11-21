@@ -16,12 +16,15 @@ createInertiaApp({
             .use(plugin)
             .use(ZiggyVue, Ziggy);
         
-        // TODO: Configurar Vue i18n para soporte multiidioma
+        // TODO: Configurar Vue i18n para soporte multiidioma completo
+        // Esta es una implementación temporal básica.
+        // Para producción, instalar y configurar vue-i18n:
+        // npm install vue-i18n@9
         // import { createI18n } from 'vue-i18n';
-        // const i18n = createI18n({ ... });
+        // const i18n = createI18n({ locale: 'en', messages: { es, en } });
         // app.use(i18n);
         
-        // Agregar función $t temporal para las vistas
+        // Función $t temporal para las vistas (reemplazar con vue-i18n real)
         app.config.globalProperties.$t = (key) => {
             // Implementación básica - reemplazar con vue-i18n real
             const translations = {
@@ -66,6 +69,9 @@ createInertiaApp({
                 'editor.cancel': 'Cancel',
                 'editor.create_prompt': 'Create New Prompt',
                 'editor.edit_prompt': 'Edit Prompt',
+                'code.copied': 'Copied!',
+                'code.copy_code': 'Copy code',
+                'dashboard.confirm_delete': 'Are you sure you want to delete this prompt?',
             };
             return translations[key] || key;
         };

@@ -156,7 +156,8 @@ const formatDate = (date) => {
 
 // Confirmar eliminación
 const confirmDelete = (prompt) => {
-  if (confirm(`¿Estás seguro de que quieres eliminar "${prompt.title.es || prompt.title.en}"?`)) {
+  const title = prompt.title.es || prompt.title.en;
+  if (confirm(`Are you sure you want to delete "${title}"?`)) {
     router.delete(route('prompts.destroy', prompt.id));
   }
 };
