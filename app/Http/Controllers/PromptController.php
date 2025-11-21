@@ -118,7 +118,7 @@ class PromptController extends Controller
             'visibility' => 'required|in:public,private,unlisted',
         ]);
 
-        $validated['slug'] = Str::slug($validated['title']['en']) . '-' . Str::random(6);
+        $validated['slug'] = Str::slug($validated['title']['en'] ?: $validated['title']['es']) . '-' . Str::random(6);
         $validated['user_id'] = $request->user()->id;
 
         $prompt = Prompt::create($validated);

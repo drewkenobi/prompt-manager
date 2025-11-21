@@ -140,7 +140,7 @@ const copyPrompt = async () => {
       copied.value = false;
     }, 2000);
   } catch (err) {
-    console.error('Error al copiar:', err);
+    console.error('Error copying:', err);
   }
 };
 

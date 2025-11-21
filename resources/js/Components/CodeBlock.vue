@@ -66,7 +66,7 @@ const copyCode = async () => {
       copied.value = false;
     }, 2000);
   } catch (err) {
-    console.error('Error al copiar código:', err);
+    console.error('Error copying code:', err);
   }
 };
 </script>

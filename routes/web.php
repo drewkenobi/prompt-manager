@@ -40,7 +40,6 @@ require __DIR__.'/auth.php';
 // Rutas públicas de prompts
 Route::get('/prompts', [App\Http\Controllers\PromptController::class, 'index'])->name('prompts.index');
 Route::get('/prompts/{prompt}', [App\Http\Controllers\PromptController::class, 'show'])->name('prompts.show');
-Route::post('/prompts/{prompt}/copy', [App\Http\Controllers\PromptController::class, 'copy'])->name('prompts.copy');
 
 // Rutas protegidas (requieren autenticación)
 Route::middleware(['auth', 'verified'])->group(function () {
@@ -55,6 +54,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/prompts', [App\Http\Controllers\PromptController::class, 'store'])->name('prompts.store');
     Route::put('/prompts/{prompt}', [App\Http\Controllers\PromptController::class, 'update'])->name('prompts.update');
     Route::delete('/prompts/{prompt}', [App\Http\Controllers\PromptController::class, 'destroy'])->name('prompts.destroy');
+    
+    // Copiar prompt (requiere autenticación para tracking)
+    Route::post('/prompts/{prompt}/copy', [App\Http\Controllers\PromptController::class, 'copy'])->name('prompts.copy');
     
     // Favoritos
     Route::post('/prompts/{prompt}/favorite', [App\Http\Controllers\PromptController::class, 'toggleFavorite'])->name('prompts.favorite');
