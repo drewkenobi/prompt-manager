@@ -64,6 +64,8 @@ createInertiaApp({
                 'editor.tags_placeholder': 'Tags separated by comma',
                 'editor.save': 'Save',
                 'editor.cancel': 'Cancel',
+                'editor.create_prompt': 'Create New Prompt',
+                'editor.edit_prompt': 'Edit Prompt',
             };
             return translations[key] || key;
         };

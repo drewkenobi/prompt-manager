@@ -46,6 +46,8 @@
     "tags": "Etiquetas",
     "tags_placeholder": "Etiquetas separadas por coma",
     "save": "Guardar",
-    "cancel": "Cancelar"
+    "cancel": "Cancelar",
+    "create_prompt": "Crear Nuevo Prompt",
+    "edit_prompt": "Editar Prompt"
   }
 }

@@ -46,6 +46,8 @@
     "tags": "Tags",
     "tags_placeholder": "Tags separated by comma",
     "save": "Save",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "create_prompt": "Create New Prompt",
+    "edit_prompt": "Edit Prompt"
   }
 }
