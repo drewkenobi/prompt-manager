@@ -72,9 +72,9 @@ jobs:
         run: composer install --prefer-dist --no-interaction --no-progress --optimize-autoloader
 
       - name: Copy .env file
-        run: cp .env.example .env || echo "No .env.example found, creating minimal .env"
+        run: cp .env.example .env 2>/dev/null || true
 
-      - name: Create minimal .env if needed
+      - name: Create .env if needed
         run: |
           if [ ! -f .env ]; then
             echo "APP_NAME='Prompts Manager'" > .env

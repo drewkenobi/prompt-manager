@@ -226,18 +226,59 @@ class Prompt extends Model
 }
 EOF
 
-echo -e "${GREEN}[8/12] Actualizando modelo User...${NC}"
-# Agregar método favorites() al modelo User
-sed -i '/use HasFactory, Notifiable;/a\
-\
-    /**\
-     * Prompts marcados como favoritos por el usuario\
-     */\
-    public function favorites()\
-    {\
-        return $this->belongsToMany(Prompt::class, '\''prompt_favorites'\'')\
-            ->withTimestamps();\
-    }' app/Models/User.php || echo "Note: User.php may need manual editing for favorites() method"
+echo -e "${GREEN}[8/12] Creando modelo User con relaciones...${NC}"
+# Crear modelo User completo en lugar de modificarlo con sed
+cat > app/Models/User.php << 'EOF'
+<?php
+
+namespace App\Models;
+
+// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Laravel\Sanctum\HasApiTokens;
+
+class User extends Authenticatable
+{
+    use HasApiTokens, HasFactory, Notifiable;
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'datetime',
+        'password' => 'hashed',
+    ];
+
+    /**
+     * Prompts creados por el usuario
+     */
+    public function prompts(): HasMany
+    {
+        return $this->hasMany(Prompt::class);
+    }
+
+    /**
+     * Prompts marcados como favoritos por el usuario
+     */
+    public function favorites(): BelongsToMany
+    {
+        return $this->belongsToMany(Prompt::class, 'prompt_favorites')
+            ->withTimestamps();
+    }
+}
+EOF
 
 echo -e "${GREEN}[9/12] Creando PromptPolicy...${NC}"
 cat > app/Policies/PromptPolicy.php << 'EOF'

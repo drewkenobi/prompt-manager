@@ -47,6 +47,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard de prompts del usuario
     Route::get('/dashboard/prompts', [App\Http\Controllers\PromptController::class, 'dashboard'])->name('dashboard.prompts');
     
+    // Formularios
+    Route::get('/prompts/create', [App\Http\Controllers\PromptController::class, 'create'])->name('prompts.create');
+    Route::get('/prompts/{prompt}/edit', [App\Http\Controllers\PromptController::class, 'edit'])->name('prompts.edit');
+    
     // CRUD de prompts
     Route::post('/prompts', [App\Http\Controllers\PromptController::class, 'store'])->name('prompts.store');
     Route::put('/prompts/{prompt}', [App\Http\Controllers\PromptController::class, 'update'])->name('prompts.update');

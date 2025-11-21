@@ -76,6 +76,28 @@ class PromptController extends Controller
     }
 
     /**
+     * Mostrar formulario de creación
+     */
+    public function create()
+    {
+        $this->authorize('create', Prompt::class);
+
+        return Inertia::render('Dashboard/Prompts/Create');
+    }
+
+    /**
+     * Mostrar formulario de edición
+     */
+    public function edit(Prompt $prompt)
+    {
+        $this->authorize('update', $prompt);
+
+        return Inertia::render('Dashboard/Prompts/Edit', [
+            'prompt' => $prompt,
+        ]);
+    }
+
+    /**
      * Crear nuevo prompt
      */
     public function store(Request $request)

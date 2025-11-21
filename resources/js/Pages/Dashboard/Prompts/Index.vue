@@ -7,8 +7,7 @@
           {{ $t('dashboard.my_prompts') }}
         </h1>
         <Link
-          :href="route('prompts.store')"
-          method="get"
+          :href="route('prompts.create')"
           class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md transition-colors duration-200"
         >
           {{ $t('dashboard.create_prompt') }}
@@ -29,11 +28,11 @@
                   :href="route('prompts.show', prompt.id)"
                   class="text-xl font-semibold text-gray-900 dark:text-white hover:text-indigo-600 dark:hover:text-indigo-400"
                 >
-                  {{ prompt.title[$i18n.locale] || prompt.title.en }}
+                  {{ prompt.title.es || prompt.title.en }}
                 </Link>
                 
                 <p class="mt-2 text-gray-600 dark:text-gray-400 line-clamp-2">
-                  {{ prompt.description[$i18n.locale] || prompt.description.en }}
+                  {{ prompt.description.es || prompt.description.en }}
                 </p>
 
                 <!-- Metadatos -->
@@ -73,8 +72,7 @@
               <!-- Acciones -->
               <div class="flex gap-2 ml-4">
                 <Link
-                  :href="route('prompts.update', prompt.id)"
-                  method="get"
+                  :href="route('prompts.edit', prompt.id)"
                   class="p-2 text-indigo-600 hover:text-indigo-800 dark:text-indigo-400 dark:hover:text-indigo-300"
                   :title="$t('dashboard.edit')"
                 >
@@ -106,8 +104,7 @@
             {{ $t('dashboard.no_prompts_yet') }}
           </p>
           <Link
-            :href="route('prompts.store')"
-            method="get"
+            :href="route('prompts.create')"
             class="inline-block px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md transition-colors duration-200"
           >
             {{ $t('dashboard.create_first_prompt') }}

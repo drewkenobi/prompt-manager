@@ -6,7 +6,7 @@
         <div class="p-8">
           <div class="flex justify-between items-start mb-4">
             <h1 class="text-4xl font-bold text-gray-900 dark:text-white">
-              {{ prompt.title[$i18n.locale] || prompt.title.en }}
+              {{ prompt.title.es || prompt.title.en }}
             </h1>
             
             <!-- Botones de acción -->
@@ -36,7 +36,7 @@
 
           <!-- Descripción -->
           <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">
-            {{ prompt.description[$i18n.locale] || prompt.description.en }}
+            {{ prompt.description.es || prompt.description.en }}
           </p>
 
           <!-- Metadatos -->

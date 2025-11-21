@@ -159,8 +159,8 @@ const emit = defineEmits(['update:modelValue', 'save', 'cancel']);
 
 // Formulario reactivo
 const form = reactive({
-  title: { ...props.modelValue.title },
-  description: { ...props.modelValue.description },
+  title: { es: '', en: '', ...(props.modelValue.title || {}) },
+  description: { es: '', en: '', ...(props.modelValue.description || {}) },
   content: props.modelValue.content || '',
   category: props.modelValue.category || '',
   tags: [...(props.modelValue.tags || [])],

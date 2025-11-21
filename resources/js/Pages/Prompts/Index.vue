@@ -45,10 +45,10 @@
         >
           <div class="p-6">
             <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-              {{ prompt.title[$i18n.locale] || prompt.title.en }}
+              {{ prompt.title.es || prompt.title.en }}
             </h3>
             <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
-              {{ prompt.description[$i18n.locale] || prompt.description.en }}
+              {{ prompt.description.es || prompt.description.en }}
             </p>
             
             <!-- Metadatos -->
