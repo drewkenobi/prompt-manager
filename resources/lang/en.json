@@ -1,0 +1,51 @@
+{
+  "prompts": {
+    "title": "Public Prompts",
+    "search_placeholder": "Search prompts...",
+    "all_categories": "All categories",
+    "categories": {
+      "general": "General",
+      "code": "Code",
+      "writing": "Writing",
+      "analysis": "Analysis"
+    },
+    "view_details": "View details",
+    "no_prompts_found": "No prompts found",
+    "views": "views",
+    "copies": "copies",
+    "content": "Prompt Content",
+    "back_to_list": "Back to list",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "visibility": {
+      "public": "Public",
+      "private": "Private",
+      "unlisted": "Unlisted"
+    }
+  },
+  "dashboard": {
+    "my_prompts": "My Prompts",
+    "create_prompt": "Create Prompt",
+    "no_prompts_yet": "You haven't created any prompts yet",
+    "create_first_prompt": "Create my first prompt",
+    "edit": "Edit",
+    "delete": "Delete"
+  },
+  "editor": {
+    "title": "Title",
+    "title_es": "Title in Spanish",
+    "title_en": "Title in English",
+    "description": "Description",
+    "description_es": "Description in Spanish",
+    "description_en": "Description in English",
+    "content": "Content",
+    "content_placeholder": "Write your prompt here...",
+    "category": "Category",
+    "select_category": "Select a category",
+    "visibility": "Visibility",
+    "tags": "Tags",
+    "tags_placeholder": "Tags separated by comma",
+    "save": "Save",
+    "cancel": "Cancel"
+  }
+}
