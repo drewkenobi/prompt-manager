@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Prompt;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 use Inertia\Inertia;
 
 /**
@@ -77,28 +76,6 @@ class PromptController extends Controller
     }
 
     /**
-     * Mostrar formulario de creación
-     */
-    public function create()
-    {
-        $this->authorize('create', Prompt::class);
-
-        return Inertia::render('Dashboard/Prompts/Create');
-    }
-
-    /**
-     * Mostrar formulario de edición
-     */
-    public function edit(Prompt $prompt)
-    {
-        $this->authorize('update', $prompt);
-
-        return Inertia::render('Dashboard/Prompts/Edit', [
-            'prompt' => $prompt,
-        ]);
-    }
-
-    /**
      * Crear nuevo prompt
      */
     public function store(Request $request)
@@ -118,7 +95,7 @@ class PromptController extends Controller
             'visibility' => 'required|in:public,private,unlisted',
         ]);
 
-        $validated['slug'] = Str::slug($validated['title']['en'] ?: $validated['title']['es']) . '-' . Str::random(6);
+        $validated['slug'] = \Str::slug($validated['title']['en']) . '-' . \Str::random(6);
         $validated['user_id'] = $request->user()->id;
 
         $prompt = Prompt::create($validated);

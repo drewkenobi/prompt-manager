@@ -40,23 +40,17 @@ require __DIR__.'/auth.php';
 // Rutas públicas de prompts
 Route::get('/prompts', [App\Http\Controllers\PromptController::class, 'index'])->name('prompts.index');
 Route::get('/prompts/{prompt}', [App\Http\Controllers\PromptController::class, 'show'])->name('prompts.show');
+Route::post('/prompts/{prompt}/copy', [App\Http\Controllers\PromptController::class, 'copy'])->name('prompts.copy');
 
 // Rutas protegidas (requieren autenticación)
 Route::middleware(['auth', 'verified'])->group(function () {
     // Dashboard de prompts del usuario
     Route::get('/dashboard/prompts', [App\Http\Controllers\PromptController::class, 'dashboard'])->name('dashboard.prompts');
     
-    // Formularios (antes de las rutas con parámetros para evitar conflictos)
-    Route::get('/dashboard/prompts/create', [App\Http\Controllers\PromptController::class, 'create'])->name('prompts.create');
-    Route::get('/dashboard/prompts/{prompt}/edit', [App\Http\Controllers\PromptController::class, 'edit'])->name('prompts.edit');
-    
     // CRUD de prompts
     Route::post('/prompts', [App\Http\Controllers\PromptController::class, 'store'])->name('prompts.store');
     Route::put('/prompts/{prompt}', [App\Http\Controllers\PromptController::class, 'update'])->name('prompts.update');
     Route::delete('/prompts/{prompt}', [App\Http\Controllers\PromptController::class, 'destroy'])->name('prompts.destroy');
-    
-    // Copiar prompt (requiere autenticación para tracking)
-    Route::post('/prompts/{prompt}/copy', [App\Http\Controllers\PromptController::class, 'copy'])->name('prompts.copy');
     
     // Favoritos
     Route::post('/prompts/{prompt}/favorite', [App\Http\Controllers\PromptController::class, 'toggleFavorite'])->name('prompts.favorite');
