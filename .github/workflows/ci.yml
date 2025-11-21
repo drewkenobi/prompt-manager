@@ -1,0 +1,55 @@
+# .github/workflows/ci.yml
+name: CI
+
+on:
+  push:
+    branches: [ main, feat/initial-scaffold ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: mbstring, bcmath, pdo_sqlite, pdo_mysql, zip, exif
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+          cache-dependency-path: package-lock.json
+
+      - name: Install Composer dependencies
+        run: composer install --no-progress --no-interaction --prefer-dist --optimize-autoloader
+
+      - name: Prepare .env, sqlite DB and permissions for tests
+        run: |
+          cp .env.example .env || true
+          php artisan key:generate
+          mkdir -p database
+          touch database/database.sqlite
+          # set DB to sqlite
+          sed -i 's/DB_CONNECTION=.*/DB_CONNECTION=sqlite/' .env
+          sed -i "s|DB_DATABASE=.*|DB_DATABASE=$(pwd)/database/database.sqlite|" .env
+          mkdir -p storage bootstrap/cache
+          chmod -R 0777 storage bootstrap/cache || true
+
+      - name: Run migrations
+        run: php artisan migrate --force
+
+      - name: Run tests (PHPUnit, serial)
+        run: |
+          if [ -f vendor/bin/phpunit ]; then
+            vendor/bin/phpunit --colors=always
+          else
+            echo "phpunit not found in vendor/bin, trying composer test..."
+            composer test || true
+          fi

@@ -1,0 +1,53 @@
+{
+  "prompts": {
+    "title": "Prompts Públicos",
+    "search_placeholder": "Buscar prompts...",
+    "all_categories": "Todas las categorías",
+    "categories": {
+      "general": "General",
+      "code": "Código",
+      "writing": "Escritura",
+      "analysis": "Análisis"
+    },
+    "view_details": "Ver detalles",
+    "no_prompts_found": "No se encontraron prompts",
+    "views": "vistas",
+    "copies": "copias",
+    "content": "Contenido del Prompt",
+    "back_to_list": "Volver a la lista",
+    "copy": "Copiar",
+    "copied": "¡Copiado!",
+    "visibility": {
+      "public": "Público",
+      "private": "Privado",
+      "unlisted": "No listado"
+    }
+  },
+  "dashboard": {
+    "my_prompts": "Mis Prompts",
+    "create_prompt": "Crear Prompt",
+    "no_prompts_yet": "Aún no has creado ningún prompt",
+    "create_first_prompt": "Crear mi primer prompt",
+    "edit": "Editar",
+    "delete": "Eliminar"
+  },
+  "editor": {
+    "title": "Título",
+    "title_es": "Título en español",
+    "title_en": "Título en inglés",
+    "description": "Descripción",
+    "description_es": "Descripción en español",
+    "description_en": "Descripción en inglés",
+    "content": "Contenido",
+    "content_placeholder": "Escribe tu prompt aquí...",
+    "category": "Categoría",
+    "select_category": "Selecciona una categoría",
+    "visibility": "Visibilidad",
+    "tags": "Etiquetas",
+    "tags_placeholder": "Etiquetas separadas por coma",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "create_prompt": "Crear Nuevo Prompt",
+    "edit_prompt": "Editar Prompt"
+  }
+}
